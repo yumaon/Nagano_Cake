@@ -2,45 +2,45 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get 'about' => 'public/homes#about'
- 
+
   get 'customers/my_page' => 'public/customers#show'
   get 'customers/information/edit' => 'public/customers#edit'
   patch 'customers/information' => 'public/customers#update'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe'
   patch 'customers/hide' => 'public/customers#hide'
-  
+
 
   scope module: :public do
-    
+
     resources :items, only:[:index, :show]
-    
+
     resources :cart_items, only:[:index, :update, :destroy, :create,]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    
+
     resources :orders, only:[:new, :create, :index, :show]
     post 'orders/confirm'
-    get 'orders/complete' 
-    
+    get 'orders/complete'
+
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
-    
+
   end
 
   namespace :admin do
-    
+
     get '/' => 'homes#top'
-    
+
     resources :items, only:[:index, :new, :create, :show, :edit, :update]
-    
+
     resources :genres, only:[:index, :create, :edit, :update]
-    
+
     resources :customers, only:[:index, :show, :edit, :update]
-    
+
     resources :orders, only:[:show, :update] do
       resources :order_details, only:[:update]
     end
-    
+
   end
-  
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }

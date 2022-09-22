@@ -5,3 +5,10 @@
   <%= f.text_field :name %>
   <%= f.submit '新規登録' %>
 <% end %>
+
+<h3>ジャンル</h3>
+
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+  <%= link_to "編集する", edit_admin_genre_path(genre.id) %>
+<% end %>

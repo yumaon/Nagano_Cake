@@ -1,2 +1,22 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <%= image_tag 'nagano_cake_top.jpg', size: "1200x800" %>
+  <div class="row">
+    <p>ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員ではない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+    </p>
+  </div>
+</div>
+
+<h3>新着商品</h3>
+
+<% @items.each do |item| %>
+
+<div>
+  <%= image_tag item.image, size: "250x180" %>
+  <p><%= item.name %></p>
+  <p>¥<%= item.price %> </p>
+</div>
+
+<% end %>

@@ -11,12 +11,27 @@
 
 <h3>新着商品</h3>
 
-<% @items.each do |item| %>
+<% @items.first(4).each do |item| %>
 
-<div>
-  <%= image_tag item.image, size: "250x180" %>
-  <p><%= item.name %></p>
-  <p>¥<%= item.price %> </p>
-</div>
-
+<%= link_to item_path(item.id) do %>
+  <div>
+    <%= image_tag item.image, size: "250x180" %>
+    <p><%= item.name %></p>
+    <p>¥<%= item.price %> </p>
+  </div>
 <% end %>
+<% end %>
+
+<details>
+  <summary>全ての商品を見る ></summary>
+  <% @items[4..100].each do |item| %>
+
+  <%= link_to item_path(item.id) do %>
+  <div>
+    <%= image_tag item.image, size: "250x180" %>
+    <p><%= item.name %></p>
+    <p>¥<%= item.price %></p>
+  </div>
+  <% end %>
+  <% end %>
+</details>

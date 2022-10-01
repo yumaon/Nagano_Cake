@@ -15,6 +15,14 @@ before_action :authenticate_customer!
   end
 
   def unsubscribe
+    @customer = current_customer
+  end
+
+  def hide
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

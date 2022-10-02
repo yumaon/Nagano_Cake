@@ -1,2 +1,16 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= image_tag @item.image, size: "600x450" %>
+
+<h2><%= @item.name %></h2>
+<p><%= @item.introduction %></p>
+<h2>¥<%= (@item.price*1.1).floor.to_s(:delimited) %></h2>
+<p>(税込)</p>
+
+<% if @item.is_active == true %>
+  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+    <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: '個数選択' %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+<% else %>
+  <p>この商品は売り切れです</p>
+<% end %>

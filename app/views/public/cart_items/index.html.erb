@@ -1,2 +1,50 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h4>ショッピングカート</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% total = 0 %>
+    <% if current_customer.cart_items.present? %>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.image, size: "70x50" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td>
+            <%= (cart_item.item.price*1.1).floor.to_s(:delimited) %>
+          </td>
+          <td>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+              <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+              <%= f.submit "変更" %>
+            <% end %>
+          </td>
+          <td>
+            <% subtotal = ((cart_item.item.price*cart_item.amount)*1.1) %>
+            <%= subtotal.floor.to_s(:delimited) %>
+          </td>
+          <td>
+            <%= link_to "削除する", cart_item_path(cart_item.id, cart_item), method: :delete %>
+          </td>
+        </tr>
+        <% total += subtotal %>
+      <% end %>
+    <% end %>
+    <tr>
+      <th>合計金額</th>
+      <td><%= total.floor.to_s(:delimited) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "買い物を続ける", root_path %>
+<%= link_to "情報入力に進む", new_order_path %>

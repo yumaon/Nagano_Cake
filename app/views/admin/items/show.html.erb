@@ -9,7 +9,7 @@
 <p>ジャンル</p>
 <%= @item.genre.name %>
 <p>税込価格<br>(税抜価格)</p>
-<%= (@item.price*1.1).floor.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円
+<%= @item.with_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円
 <p>販売ステータス</p>
 <%= @item.is_active ? '販売中' : '販売停止中' %>
 

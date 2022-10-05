@@ -14,11 +14,7 @@ class Public::OrdersController < ApplicationController
       @order.name = Address.find(params[:order][:address_id]).name
       @order.address = Address.find(params[:order][:address_id]).address
     elsif params[:order][:address_number] == "3"
-      address_new = current_customer.addresses.new(address_params)
-      if address_new.save
-      else
-        render :new
-      end
+      current_customer.addresses.new(address_params)
     end
     @order.shipping_cost = "800"
     @cart_items = current_customer.cart_items.all

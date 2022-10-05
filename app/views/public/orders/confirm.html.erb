@@ -44,6 +44,7 @@
 </div>
 <div>
   <h3>お届け先</h3>
-  〒<%= @order.address %>
+  〒<%= @order.postal_code %>
+  <%= @order.address %>
   <%= @order.name %>
 </div>

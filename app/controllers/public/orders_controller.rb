@@ -13,8 +13,8 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = Address.find(params[:order][:address_id]).postal_code
       @order.name = Address.find(params[:order][:address_id]).name
       @order.address = Address.find(params[:order][:address_id]).address
-    elsif params[:order][:address_number] == "3"
-      current_customer.addresses.new(address_params)
+    # elsif params[:order][:address_number] == "3"
+    #   current_customer.addresses.new(address_params)
     end
     @order.shipping_cost = "800"
     @cart_items = current_customer.cart_items.all

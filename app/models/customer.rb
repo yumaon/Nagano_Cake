@@ -9,7 +9,7 @@ has_many :cart_items, dependent: :destroy
 has_many :orders, dependent: :destroy
 has_many :addresses, dependent: :destroy
 
-  def destination_name
+  def name_display
     last_name + first_name
   end
 

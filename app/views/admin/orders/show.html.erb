@@ -38,7 +38,10 @@
       <h5>注文ステータス</h5>
     </div>
     <div class="col-md-10">
-      <p><%= @order.status %></p>
+      <%= form_with model: @order, url: admin_order_path  do |f| %>
+        <p><%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %></p>
+        <%= f.submit "更新" %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -62,7 +65,10 @@
           <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-          <td><%= order_detail.making_status %></td>
+          <%= form_with model: order_detail, url: admin_order_order_detail_path(@order,order_detail), method: :patch do |f| %>
+            <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
+            <td><%= f.submit "更新" %></td>
+          <% end %>
         </tr>
         <% total += order_detail.subtotal %>
       <% end %>

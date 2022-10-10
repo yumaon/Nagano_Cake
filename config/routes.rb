@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
 
     resources :orders, only:[:show, :update] do
+      # patch 'order_details/:id' => 'order_details#update', as: 'order_detail'
       resources :order_details, only:[:update]
     end
 

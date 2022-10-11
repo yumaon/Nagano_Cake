@@ -65,7 +65,7 @@
           <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-          <%= form_with model: order_detail, url: admin_order_order_detail_path(@order,order_detail), method: :patch do |f| %>
+          <%= form_with model: [@order, order_detail], url: admin_order_order_detail_path(@order,order_detail), method: :patch do |f| %>
             <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %></td>
             <td><%= f.submit "更新" %></td>
           <% end %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'public_items_search' => 'public/items#search', as: 'public_items_search'
+  get 'admin_items_search' => 'admin/items#search', as: 'admin_items_search'
+
   root to: "public/homes#top"
   get 'about' => 'public/homes#about'
 

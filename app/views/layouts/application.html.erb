@@ -28,6 +28,12 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
+        <div class="search-form">
+        <%= form_with url: admin_items_search_path, method: :get do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
       <% elsif customer_signed_in? %>
         <li>
           <%= link_to "マイページ", customers_my_page_path %>
@@ -41,6 +47,12 @@
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
+        <div class="search-form">
+        <%= form_with url: public_items_search_path, method: :get do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
       <% else %>
         <li>
           <%= link_to "About" , about_path %>
@@ -54,8 +66,13 @@
         <li>
           <%= link_to "ログイン", new_customer_session_path %>
         </li>
+        <div class="search-form">
+        <%= form_with url: public_items_search_path, method: :get do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
       <% end %>
-
     </header>
 
     <%= yield %>

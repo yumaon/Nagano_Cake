@@ -4,6 +4,7 @@ class Public::ItemsController < ApplicationController
     @keyword = params[:keyword]
     @item = @items
     @genres = Genre.all
+    @list_name = "商品一覧"
     render "index"
   end
 
@@ -11,10 +12,10 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     if params[:name].present?
       @items = Genre.find(params[:name]).items.page(params[:page])
-      @list_name = Genre.find(params[:name]).name
+      @list_name = Genre.find(params[:name]).name + "一覧"
     else
       @items = Item.page(params[:page])
-      @list_name = "商品"
+      @list_name = "商品一覧"
     end
 
   end

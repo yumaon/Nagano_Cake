@@ -17,7 +17,7 @@
           <% end %>
         </td>
         <%= form_tag admin_path, method: :get do %>
-          <td><%= link_to order.customer.name_display, admin_path(email: order.customer.id) %></td>
+          <td><%= link_to order.customer.name_display, admin_path(name: order.customer.id) %></td>
         <% end %>
         <td>
           <% total = 0 %>

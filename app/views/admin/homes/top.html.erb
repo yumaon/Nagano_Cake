@@ -1,4 +1,4 @@
-<h4>注文履歴一覧</h4>
+<h4><%= @list_name %></h4>
 <table>
   <thead>
     <tr>
@@ -16,7 +16,9 @@
             <%= l order.created_at %>
           <% end %>
         </td>
-        <td><%= order.customer.name_display %></td>
+        <%= form_tag admin_path, method: :get do %>
+          <td><%= link_to order.customer.name_display, admin_path(email: order.customer.id) %></td>
+        <% end %>
         <td>
           <% total = 0 %>
           <% order.order_details.each do |order_detail| %>

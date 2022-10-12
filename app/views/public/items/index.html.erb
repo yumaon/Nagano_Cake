@@ -1,4 +1,12 @@
-<h1>商品一覧(全<%= @item.count %>件)</h1>
+<div>
+  <%= form_tag items_path, method: :get do %>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, items_path(name: genre.id) %>
+    <% end %>
+  <% end %>
+</div>
+
+<h1><%= @list_name %>一覧(全<%= @items.total_count %>件)</h1>
 
 <% @items.each do |item| %>
 

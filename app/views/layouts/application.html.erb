@@ -11,7 +11,12 @@
   </head>
 
   <body>
-    <header class="navbar-light bg-light border-bottom">
+    <header class="navbar-light bg-light border-bottom position-relative">
+      <span>
+        <% if customer_signed_in? %>
+        <p class="position-absolute" style=" top: 40px; left: 450px;">ようこそ、<%= current_customer.last_name %>さん！</p>
+        <% end %>
+      </span>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <a class="navbar-brand h1" href="/"><span>ながのCAKE</span></a>

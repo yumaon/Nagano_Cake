@@ -1,0 +1,16 @@
+<div class="col-md-2 h-50 border">
+  <div class="border-bottom pt-3">
+    <p class="text-center">ジャンル検索</p>
+  </div>
+  <div>
+    <ul class="nav flex-column">
+      <%= form_tag items_path, method: :get do %>
+        <% genres.each do |genre| %>
+          <li class="nav-item my-3">
+            <%= link_to genre.name, items_path(name: genre.id) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -23,7 +23,7 @@
             <div class="mx-2">
               <%= image_tag item.image, size: "250x180" %>
               <p class="mt-2"><%= item.name %></p>
-              <p>¥<%= item.price %> </p>
+              <p>¥<%= item.with_tax_price.to_s(:delimited) %> </p>
             </div>
           <% end %>
         <% end %>
@@ -37,7 +37,7 @@
               <div class="mx-2">
                 <%= image_tag item.image, size: "250x180" %>
                 <p class="mt-2"><%= item.name %></p>
-                <p>¥<%= item.price %></p>
+                <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
               </div>
             <% end %>
             <% end %>

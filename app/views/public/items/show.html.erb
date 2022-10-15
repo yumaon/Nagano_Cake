@@ -1,16 +1,32 @@
-<%= image_tag @item.image, size: "600x450" %>
-
-<h2><%= @item.name %></h2>
-<p><%= @item.introduction %></p>
-<h2>¥<%= @item.with_tax_price.to_s(:delimited) %></h2>
-<p>(税込)</p>
-
-<% if @item.is_active == true %>
-  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-    <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: '個数選択' %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
-<% else %>
-  <p>この商品は販売停止中です</p>
-<% end %>
+<div class="container-fluid">
+  <div class="row mx-4 pt-5">
+    <%= render 'genres_list', genres:@genres %>
+    <div class="col-md-4 offset-md-1">
+      <div class="row">
+        <%= image_tag @item.image, size: "500x350" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <h2><strong><%= @item.name %></strong></h2>
+      </div>
+      <div class="row mt-2">
+        <p><%= @item.introduction %></p>
+      </div>
+      <div class="row mt-5">
+        <h2>¥<%= @item.with_tax_price.to_s(:delimited) %><span class="h5">(税込)</span></h2>
+      </div>
+      <div class="row mt-5">
+        <% if @item.is_active == true %>
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], include_blank: '個数選択' %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる", class: "btn btn-success ml-4" %>
+        <% end %>
+        <% else %>
+          <p>この商品は販売停止中です</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

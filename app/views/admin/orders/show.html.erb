@@ -38,7 +38,7 @@
       <h5><strong>注文ステータス</strong></h5>
     </div>
     <div class="col-md-5 col-form-label">
-      <%= form_with model: @order, url: admin_order_path do |f| %>
+      <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
         <%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %>
         <%= f.submit "更新", class: "btn btn-success btn-sm ml-4" %>
       <% end %>

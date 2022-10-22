@@ -1,4 +1,6 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
+
   def top
     if params[:name].present?
       @orders = Customer.find(params[:name]).orders.page(params[:page]).per(10)

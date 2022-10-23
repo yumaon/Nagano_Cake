@@ -1,5 +1,5 @@
 # ながのCAKE
-![ながのCAKE](nagano_cake/app/assets/images/NaganoCake_screen.png)
+![NaganoCake_screen](https://user-images.githubusercontent.com/110388364/197368889-c1912bc8-977d-4429-bdbf-98467fdeaf08.png)
 
 ## 概要
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。

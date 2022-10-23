@@ -9,6 +9,6 @@
   </div>
   <div class="text-center" style="margin-top: 40px;">
     <%= link_to "退会しない", customers_my_page_path(@customer), class: "btn btn-primary mr-3 px-3" %>
-    <%= link_to "退会する", customers_hide_path(@customer), method: :patch, class: "btn btn-danger px-4" %>
+    <%= link_to "退会する", customers_hide_path(@customer), method: :patch, "data-confirm" => "本当によろしいですか？", class: "btn btn-danger px-4" %>
   </div>
 </div>

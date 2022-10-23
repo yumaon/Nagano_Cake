@@ -1,24 +1,44 @@
-# README
+# ながのCAKE
+![ながのCAKE](images/NaganoCake_screen.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-Things you may want to cover:
+## サイトの説明
+- 通販では受注生産型を採用しています。
+- 支払方法はクレジットカード、銀行振込から選択可能です。
 
-* Ruby version
+## 開発環境
+- Cloud9
 
-* System dependencies
+### バックエンド
+- ruby 3.1.2
+- Rails 6.1.7
 
-* Configuration
+### その他
+- bootstrap
+- kaminari
+- devise
 
-* Database creation
+## 機能
 
-* Database initialization
+### 顧客側
 
-* How to run the test suite
+- 会員登録、ログイン、ログアウト、退会が可能です。
+- サイト閲覧はログインなしで行えます。
+- 商品をカートに入れ、一度に複数種類、複数商品の購入ができます。また、カート内の商品は個数変更・削除が可能です。
+- カートへの商品追加はログインなしでは行えません。
+- 会員は配送先を複数登録しておくことが可能です。
+- 商品は税込価格で表示されます。
+- ヘッダー内の検索窓で、商品を検索することが可能です。
+- ジャンル検索機能も実装しています。
 
-* Services (job queues, cache servers, search engines, etc.)
+### 管理者側
 
-* Deployment instructions
-
-* ...
+- 管理者用メールアドレスとパスワードでログインが可能です。email:[test@test] password:[111111] でログインが可能です。
+- 商品の新規追加、編集、閲覧が可能です。
+- 商品の販売停止、販売中の切り替えも可能です。
+- 会員登録されているユーザーの情報の閲覧、編集、退会処理が行えます。
+- ユーザーの注文履歴が一覧、詳細表示することができます。
+- 注文ごとに注文ステータスの更新、注文商品ごとに製作ステータスの更新ができます。
+- ヘッダー内の検索窓で、商品を検索することができます。
